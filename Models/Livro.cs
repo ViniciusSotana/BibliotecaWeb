@@ -4,7 +4,7 @@ using BibliotecaWeb.Models;
 
 namespace BibliotecaWeb.Models
 {
-    [Table("Livro")]
+    [Table("Livros")]
     public class Livro
     {
         [Key]
@@ -36,6 +36,7 @@ namespace BibliotecaWeb.Models
         public int publicacao { get; set; }
 
         [Display(Name = "Quantia em Estoque: ")]
+        [Required(ErrorMessage = "Quantia em estoque é obrigatório")]
         public int quantiaEstoque { get; set; }
     }
 }
