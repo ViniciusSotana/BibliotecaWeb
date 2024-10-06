@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -54,18 +53,33 @@ namespace BibliotecaWeb.Controllers
         }
 
         // POST: Emprestimos/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("emprestimoId,usuarioId,livroId,dataEmprestimo,dataDevolucao")] Emprestimo emprestimo)
         {
             if (ModelState.IsValid)
             {
+                var livro = await _context.livro.FindAsync(emprestimo.livroId);
+
+                // Verifica se o livro existe e se há estoque disponível
+                if (livro == null || livro.quantiaEstoque <= 0)
+                {
+                    ModelState.AddModelError("", "Livro não disponível para empréstimo.");
+                    ViewData["livroId"] = new SelectList(_context.livro, "livroId", "titulo", emprestimo.livroId);
+                    ViewData["usuarioId"] = new SelectList(_context.usuario, "usuarioId", "cpf", emprestimo.usuarioId);
+                    return View(emprestimo);
+                }
+
+                // Adiciona o empréstimo ao contexto
                 _context.Add(emprestimo);
+
+                // Diminui a quantidade do livro
+                livro.quantiaEstoque--;
+
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
             ViewData["livroId"] = new SelectList(_context.livro, "livroId", "titulo", emprestimo.livroId);
             ViewData["usuarioId"] = new SelectList(_context.usuario, "usuarioId", "cpf", emprestimo.usuarioId);
             return View(emprestimo);
@@ -90,8 +104,6 @@ namespace BibliotecaWeb.Controllers
         }
 
         // POST: Emprestimos/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("emprestimoId,usuarioId,livroId,dataEmprestimo,dataDevolucao")] Emprestimo emprestimo)
@@ -155,6 +167,13 @@ namespace BibliotecaWeb.Controllers
             if (emprestimo != null)
             {
                 _context.emprestimo.Remove(emprestimo);
+
+                // Aqui você pode adicionar lógica para reverter a quantidade do livro se necessário
+                var livro = await _context.livro.FindAsync(emprestimo.livroId);
+                if (livro != null)
+                {
+                    livro.quantiaEstoque++;
+                }
             }
 
             await _context.SaveChangesAsync();
