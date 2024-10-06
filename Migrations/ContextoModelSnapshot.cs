@@ -80,8 +80,8 @@ namespace BibliotecaWeb.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("generoId"));
 
-                    b.Property<int>("assunto")
-                        .HasColumnType("int");
+                    b.Property<string>("assunto")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("generoId");
 

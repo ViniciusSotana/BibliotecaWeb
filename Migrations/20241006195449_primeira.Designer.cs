@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BibliotecaWeb.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20241003141832_inicial")]
-    partial class inicial
+    [Migration("20241006195449_primeira")]
+    partial class primeira
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -83,8 +83,8 @@ namespace BibliotecaWeb.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("generoId"));
 
-                    b.Property<int>("assunto")
-                        .HasColumnType("int");
+                    b.Property<string>("assunto")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("generoId");
 
