@@ -37,9 +37,9 @@
                 @Html.DisplayFor(modelItem => item.dataRegistro)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.usuarioId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.usuarioId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.usuarioId">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@item.usuarioId"><i class="fa-solid fa-pen fa-2x" style="margin-right: 10px; font-size: 1.5em;"></i></a>
+                    <a asp-action="Details" asp-route-id="@item.usuarioId"><i class="fa-solid fa-bars fa-2x" style="margin-right: 10px; font-size: 1.5em;"></i></a>
+                    <a asp-action="Delete" asp-route-id="@item.usuarioId"><i class="fa-solid fa-xmark fa-2x" style="color: #f40101; font-size: 1.5em;"></i></a>
             </td>
         </tr>
 }
