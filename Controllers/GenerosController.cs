@@ -45,6 +45,7 @@ namespace BibliotecaWeb.Controllers
         // GET: Generos/Create
         public IActionResult Create()
         {
+            ViewBag.generosId = new SelectList(_context.genero, "generoId", "assunto");
             return View();
         }
 

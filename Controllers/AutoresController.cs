@@ -45,6 +45,7 @@ namespace BibliotecaWeb.Controllers
         // GET: Autores/Create
         public IActionResult Create()
         {
+            ViewBag.autorId = new SelectList(_context.autor, "autorId", "nome", "nascimento");
             return View();
         }
 

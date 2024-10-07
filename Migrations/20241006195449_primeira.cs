@@ -31,7 +31,7 @@ namespace BibliotecaWeb.Migrations
                 {
                     generoId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    assunto = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    assunto = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {

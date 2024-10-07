@@ -14,28 +14,28 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="titulo" class="control-label"></label>
-                <input asp-for="titulo" class="form-control" />
+                <input asp-for="titulo" class="form-control bg-info bg-opacity-50" />
                 <span asp-validation-for="titulo" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group pt-3">
                 <label asp-for="autorId" class="control-label"></label>
-                <select asp-for="autorId" class ="form-control" asp-items="ViewBag.autorId"></select>
+                <select asp-for="autorId" class="form-control bg-info bg-opacity-50" asp-items="ViewBag.autorId"></select>
             </div>
-            <div class="form-group">
+            <div class="form-group pt-3">
                 <label asp-for="generoId" class="control-label"></label>
-                <select asp-for="generoId" class ="form-control" asp-items="ViewBag.generoId"></select>
+                <select asp-for="generoId" class="form-control bg-info bg-opacity-50" asp-items="ViewBag.generoId"></select>
             </div>
-            <div class="form-group">
+            <div class="form-group pt-3">
                 <label asp-for="publicacao" class="control-label"></label>
-                <input asp-for="publicacao" class="form-control" />
+                <input asp-for="publicacao" class="form-control bg-info bg-opacity-50" />
                 <span asp-validation-for="publicacao" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group pt-3">
                 <label asp-for="quantiaEstoque" class="control-label"></label>
-                <input asp-for="quantiaEstoque" class="form-control" />
+                <input asp-for="quantiaEstoque" class="form-control bg-info bg-opacity-50" />
                 <span asp-validation-for="quantiaEstoque" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group pt-3">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>

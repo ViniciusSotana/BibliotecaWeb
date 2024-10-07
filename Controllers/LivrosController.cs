@@ -49,7 +49,7 @@ namespace BibliotecaWeb.Controllers
         public IActionResult Create()
         {
             ViewData["autorId"] = new SelectList(_context.autor, "autorId", "nome");
-            ViewData["generoId"] = new SelectList(_context.genero, "generoId", "generoId");
+            ViewData["generoId"] = new SelectList(_context.genero, "generoId", "assunto");
             return View();
         }
 
@@ -67,7 +67,7 @@ namespace BibliotecaWeb.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["autorId"] = new SelectList(_context.autor, "autorId", "nome", livro.autorId);
-            ViewData["generoId"] = new SelectList(_context.genero, "generoId", "generoId", livro.generoId);
+            ViewData["generoId"] = new SelectList(_context.genero, "generoId", "assunto", livro.generoId);
             return View(livro);
         }
 
@@ -85,7 +85,7 @@ namespace BibliotecaWeb.Controllers
                 return NotFound();
             }
             ViewData["autorId"] = new SelectList(_context.autor, "autorId", "nome", livro.autorId);
-            ViewData["generoId"] = new SelectList(_context.genero, "generoId", "generoId", livro.generoId);
+            ViewData["generoId"] = new SelectList(_context.genero, "generoId", "assunto", livro.generoId);
             return View(livro);
         }
 
@@ -122,7 +122,7 @@ namespace BibliotecaWeb.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["autorId"] = new SelectList(_context.autor, "autorId", "nome", livro.autorId);
-            ViewData["generoId"] = new SelectList(_context.genero, "generoId", "generoId", livro.generoId);
+            ViewData["generoId"] = new SelectList(_context.genero, "generoId", "assunto", livro.generoId);
             return View(livro);
         }
 
